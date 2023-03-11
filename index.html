@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="register.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="../components/components.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script defer="true" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer="true" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Socializher</title>
+</head>
+
+<body>
+    <div id="app">
+        <socializher-header></socializher-header>
+
+        <main class="container py-5">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-flex align-self-center effect-background">
+                    <img src="../shared/images/globe.png" class="home-background" alt="Socializher HomePage Background">
+                </div>
+                <div class="col-lg-7 col-md-12 align-self-center">
+                    <form id="register-form" v-on:submit="RegistrarUsuario($event)">
+                        <h4>Bienvenido a Socializher</h4>
+                        <hr>
+                        <h5 class="mb-3">Datos personales:</h5>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    person
+                                </span>
+                            </span>
+                            <input required name="name" type="text" class="form-control" placeholder="Nombre(s)"
+                                aria-label="Nombre(s)" v-model="registro.name">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    person
+                                </span>
+                            </span>
+                            <input required name="lastName" type="text" class="form-control" placeholder="Apellido(s)"
+                                aria-label="Apellido(s)" v-model="registro.lastName">
+                        </div>
+                        <h5 class="d-inline-block">Sexo:</h5>
+                        <div class="form-check d-inline-block">
+                            <input required class="form-check-input" type="radio" value="M" name="sex"
+                                id="sexo-femenino" v-model="registro.sex">
+                            <label class="form-check-label" for="sexo-femenino">
+                                Mujer
+                            </label>
+                        </div>
+                        <div class="form-check d-inline-block">
+                            <input required class="form-check-input" type="radio" value="H" name="sex"
+                                v-model="registro.sex" id="sexo-masculino">
+                            <label class="form-check-label" for="sexo-masculino">
+                                Hombre
+                            </label>
+                        </div>
+                        <div class="mb-3"></div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    email
+                                </span>
+                            </span>
+                            <input required
+                                :class="registro.email === registro.confirmarEmail ? 'valid-match' : 'invalid-match'"
+                                name="email" type="email" class="form-control" placeholder="Dirección E-mail"
+                                aria-label="Dirección E-mail" v-model="registro.email">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    email
+                                </span>
+                            </span>
+                            <input name="confirmEmail" required
+                                :class="registro.email === registro.confirmarEmail ? 'valid-match' : 'invalid-match'"
+                                type="email" class="form-control" placeholder="Confirmar E-mail"
+                                aria-label="Confirmar E-mail" v-model="registro.confirmarEmail">
+                        </div>
+                        <article class="mb-3 form-invalid-match">
+                            <span v-if="registro.email !== registro.confirmarEmail">
+                                ** Los correos no coinciden
+                            </span>
+                        </article>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    password
+                                </span>
+                            </span>
+                            <input required
+                                :class="registro.password === registro.confirmarPassword ? 'valid-match' : 'invalid-match'"
+                                name="password" type="password" class="form-control" placeholder="********"
+                                aria-label="Contraseña" v-model="registro.password">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    password
+                                </span>
+                            </span>
+                            <input name="confirmPassword" required
+                                :class="registro.password === registro.confirmarPassword ? 'valid-match' : 'invalid-match'"
+                                type="password" class="form-control" placeholder="********"
+                                aria-label="Confirmar Contraseña" v-model="registro.confirmarPassword">
+                        </div>
+                        <article class="mb-3 form-invalid-match">
+                            <span v-if="registro.password !== registro.confirmarPassword">
+                                ** Las contraseñas no coinciden
+                            </span>
+                        </article>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    phone
+                                </span>
+                            </span>
+                            <input required name="phone" type="phone" class="form-control" placeholder="Teléfono"
+                                aria-label="Teléfono" v-model="registro.phone">
+                            <span class="input-group-text">
+                                <span class="material-icons">
+                                    cake
+                                </span>
+                            </span>
+                            <input required name="birth" type="date" class="form-control" placeholder="Cumpleaños"
+                                aria-label="Cumpleaños" v-model="registro.birth">
+                        </div>
+                        <input :disabled="registro.email !== registro.confirmarEmail || registro.password !== registro.confirmarPassword"
+                            type="submit" class="btn w-100" value="Registrarme">
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <socializher-footer></socializher-footer>
+    </div>
+    <script src="register.js"></script>
+</body>
+
+</html>

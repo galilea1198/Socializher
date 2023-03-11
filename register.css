@@ -1,0 +1,34 @@
+@import url("../shared/style/common.css");
+
+.home-background {
+    width: 100%;
+}
+
+.effect-background {
+    filter: blur(3px) brightness(95%) drop-shadow(1rem 1rem 1rem pink);
+}
+
+form > input[type=submit] {
+    background-color: var(--base-color);
+    color: var(--text-color);
+}
+
+@media (max-width: 991.98px) { 
+    .position-md-relative {
+        position: relative;
+    }
+
+    .position-md-absolute {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.valid-match {
+    border: 3px solid forestgreen;
+}
+
+.invalid-match {
+    border: 3px solid var(--base-color);
+}

@@ -1,0 +1,25 @@
+@import url("../shared/style/common.css");
+
+form > input[type=submit] {
+    background-color: var(--base-color);
+    color: var(--text-color);
+}
+
+.register-link:link {
+    text-decoration: none;
+    color: var(--alternative-color);
+}
+
+.register-link:visited {
+    text-decoration: none;
+    color: var(--alternative-color);
+}
+
+.register-link {
+    color: var(--alternative-color);
+    text-shadow: 0 0 1rem var(--base-color);
+}
+
+.register-link:hover {
+    color: var(--base-color);
+}

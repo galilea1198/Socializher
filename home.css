@@ -1,0 +1,122 @@
+@import url("../shared/style/common.css");
+
+.card-background {
+    background-color: #e563992F;
+}
+
+.card {
+    border: 1px solid var(--base-color);
+    box-shadow: 0 0 1rem var(--alternative-color);
+    width: 50%;
+}
+
+.card>.row {
+    overflow: hidden;
+}
+
+.card-text:not(.card-text:last-child) {
+    min-height: 13.375rem;
+    overflow: hidden;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+}
+
+.card-text:last-child {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.card-image {
+    background-image: url(/shared/images/flowers_1.jpg);
+    height: 100%;
+    background-size: cover;
+}
+
+@media (max-width: 991.98px) {
+    .card {
+        width: 100%;
+    }
+
+    .card-text:not(.card-text:last-child) {
+        /*height: 8rem;*/
+    }
+
+    .card-image {
+        height: 6rem;
+        background-position-y: -6.5rem;
+        background-repeat: no-repeat;
+        background-size: auto;
+    }
+
+    .relax-image {
+        display: none;
+    }
+
+    .card-group .card {
+        margin-bottom: 1rem;
+    }
+}
+
+.relax-image {
+    background-image: url(../shared/images/flowers_2.png);
+    width: calc(50% - 1rem);
+    height: 20rem;
+    opacity: 0.75;
+    filter: blur(2px);
+    background-position: center;
+}
+
+.translate-left {
+    transform: translateX(1rem);
+}
+
+.translate.right {
+    transform: translateX(-1rem);
+}
+
+.card-group > .card:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.card-group .card-body {
+    background-color: #e563992F;
+}
+
+.post-button {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    width: 100%;
+}
+
+.vision-image {
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 15rem;
+}
+
+.--image-center {
+    background-position: center;
+}
+
+.--right-invert {
+    transform: rotateY(180deg);
+}
+
+.cite-text {
+    color: gray;
+    font-style: italic;
+}
+
+.cite-text::before {
+    content: '\275D';
+    font-size: 2rem;
+    margin-right: 0.3rem;
+}
+
+.cite-text::after {
+    content: '\275E';
+    font-size: 2rem;
+    margin-left: 0.3rem;
+}
